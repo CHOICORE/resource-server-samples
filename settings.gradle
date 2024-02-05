@@ -1,0 +1,3 @@
+rootProject.name = 'resource-server-samples'
+
+include('authorization-server', 'resource-server')

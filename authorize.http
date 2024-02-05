@@ -1,0 +1,16 @@
+POST http://localhost:9090/token
+
+> {%
+    client.global.set("access_token", response.body);
+%}
+
+###
+GET http://localhost:8090/resource
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+> {%
+    client.test("Status code is 200", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
